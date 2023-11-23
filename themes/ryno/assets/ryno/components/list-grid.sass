@@ -1,0 +1,46 @@
+
+.grid
+    display: grid
+    grid-template-columns: repeat($list-grid-columns, calc(90vw / $list-grid-columns))
+    justify-content: center
+    grid-gap: $gap-medium
+    grid-auto-rows: minmax(calc( $list-grid-column-width / 2 ), auto)
+
+.grid-item
+    padding: 2px
+
+
+.flex-grid
+    width: 100%
+    max-width: 98vw
+    margin: 0 auto
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+
+.flex-center-content
+    display: flex
+    justify-content: center
+
+.flex-grid-item
+    flex: 1 1 calc(90vw / $list-grid-columns)
+    margin: 5px
+
+.flex-grid-item, .flow-free
+    flex: 1 1
+    margin: 5px
+
+.shadow
+    box-shadow: 2px 2px 2px 2px
+
+@media only screen and (max-width: 768px)
+    .grid
+        grid-template-columns: repeat(2, 150px)
+
+@media only screen and (max-width: 400px)
+    .gird
+        grid-template-columns: repeat(1, 90vw)
+    .flex-grid-item
+        flex: 1 1 calc(90vw / 2)
+        
+

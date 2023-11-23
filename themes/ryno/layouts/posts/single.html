@@ -1,0 +1,12 @@
+{{ define "main" }}
+  <article class="post-content">
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+  </article>
+  <aside>
+    {{ partial "partials/taxonomy_pill.html" (dict "terms" (.GetTerms "categories") "name" "categories" "class" "post-details") }}
+    {{ partial "partials/taxonomy_pill.html" (dict "terms" (.GetTerms "series") "name" "series" "class" "post-details") }}
+    {{ partial "partials/taxonomy_pill.html" (dict "terms" (.GetTerms "tags") "name" "tags" "class" "post-details") }}
+    <p>{{ .Date | time.Format "01 January 2006" }}</p>
+  </aside>
+{{ end }}

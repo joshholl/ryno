@@ -1,0 +1,29 @@
+{{- define "main" }}
+  <section class="posts">
+    <h1>Posts tagged with {{ .Title }}</h1>
+  </section>
+  <div class="flex-grid">
+    {{- range .Data.Pages }}
+      {{- with $page := . }}
+        {{ $imagePath := (index $page.Params.images 0) }}
+        {{ $image := ($page.Resources.GetMatch ($imagePath)) }}
+        {{ $resized := ($image.Fill "320x200 Smart lancosz q100") }}
+        <figure class="flex-grid-item post flow-free">
+          <a href="{{ $page.RelPermalink }}"><img src="{{ $resized.RelPermalink }}" /></a>
+          <figcaption>
+            <h2><a href="{{ $page.RelPermalink }}">{{ .Title }}</a></h2>
+            <div class="post-details">
+              <p>
+                {{ with $categories := $page.GetTerms "categories" }}
+                  {{ $category := ( index $categories 0) }}
+                  <a class="tag" href="{{ $category.RelPermalink }}">{{ $category.LinkTitle | strings.ToUpper }}</a>
+                {{ end }}
+              </p>
+              <p>{{ .Date | time.Format "01 January 2006" }}</p>
+            </div>
+          </figcaption>
+        </figure>
+      {{- end }}
+    {{- end }}
+  </div>
+{{- end }}

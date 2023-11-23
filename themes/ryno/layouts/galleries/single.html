@@ -1,0 +1,10 @@
+{{ define "main" }}
+  <h2>{{ .Title }}</h2>
+  <figure>
+    {{ $headerImagePath := (index .Params.images 0) }}
+    {{ $headerImage := (.Resources.GetMatch ($headerImagePath)) }}
+    {{ $resized := ($headerImage.Resize "crop 600x smart q100") }}
+    <img src="{{ $resized.RelPermalink }}" />
+    <figcaption>{{ .Summary }}</figcaption>
+  </figure>
+{{ end }}

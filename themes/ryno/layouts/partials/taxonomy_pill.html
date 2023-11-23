@@ -1,0 +1,10 @@
+{{ if .terms }}
+  <div class="{{ .class }}">
+    <h4>{{ title .name }}:</h4>
+    <ul>
+      {{ range $category := .terms }}
+        <li><a class="tag" href="{{ $category.RelPermalink }}">{{ $category.LinkTitle | strings.ToUpper }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
+{{ end }}

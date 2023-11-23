@@ -1,0 +1,22 @@
+{{- define "main" }}
+  <section class="posts">
+    {{- .Content -}}
+  </section>
+  <aside class="flex-grid flex-center-content">
+    {{- range .Paginator.Pages }}
+      {{- with $page := . }}
+        {{- $imagePath := (index $page.Params.images 0) }}
+        {{- $image := ($page.Resources.GetMatch ($imagePath)) }}
+        {{- $resized := ($image.Fill "320x320 Smart lancosz q100") }}
+        <a href="{{ $page.RelPermalink }}">
+          <figure class="flex-grid-item photo border">
+            <img src="{{ $resized.RelPermalink }}" alt="{{ .Title }}" />
+            {{- if .Site.Params.galleries.caption_on_list }}
+              <figcaption>{{ .Title }}</figcaption>
+            {{- end }}
+          </figure>
+        </a>
+      {{- end }}
+    {{- end }}
+  </aside>
+{{- end }}

@@ -1,0 +1,19 @@
+<div>
+  <p>
+    Theme made with {{ ":heart:" | .RenderString }}' by
+    <a href="https://github.com/joshholl">Josh Hollandsworth</a>
+  </p>
+  {{- if .Site.Params.socials }}
+    <hr />
+    <ul class="socials">
+      {{ $socials := .Site.Params.socials }}
+      {{- range $social_link := $socials }}
+        <li class="social-icon">
+          <a href="{{ $social_link.url }}">
+            <i class="{{ $social_link.icon }} fa-2xl"></i>
+          </a>
+        </li>
+      {{- end }}
+    </ul>
+  {{- end }}
+</div>

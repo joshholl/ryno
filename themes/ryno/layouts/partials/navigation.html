@@ -1,0 +1,32 @@
+<div class="navbar">
+  <div class="container nav-container">
+    <input class="checkbox" type="checkbox" name="hamburger-check" id="hamburger-check" />
+    <div class="hamburger-lines">
+      <span class="hamburger-line top-bun"></span>
+      <span class="hamburger-line patty"></span>
+      <span class="hamburger-line bottom-bun"></span>
+    </div>
+    <div class="logo">
+      <a href="/">{{ .Site.Title }}</a>
+    </div>
+    <ul class="menu-items">
+      {{- if .Site.Params.hamburger.show_title }}
+        <li class="hamburger-title">{{ .Site.Title }}</li>
+      {{- end }}
+      {{- $currentPage := . }}
+      {{- range .Site.Menus.main }}
+        <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+      {{- end }}
+      {{- if .Site.Params.socials }}
+        <li class="social-icon">
+          {{- $socials := .Site.Params.socials }}
+          {{- range $social_link := $socials }}
+            <a href="{{ $social_link.url }}">
+              <i class="{{ $social_link.icon }}"></i>
+            </a>
+          {{- end }}
+        </li>
+      {{- end }}
+    </ul>
+  </div>
+</div>

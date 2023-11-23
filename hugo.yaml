@@ -1,0 +1,30 @@
+baseURL: https://photo-blog-c0i.pages.dev
+title: Ryno Test Site
+theme: ryno
+enableEmoji: true
+markup:
+  defaultMarkdownHandler: goldmark
+imaging:
+  resampleFilter: "Lanczos"
+  quality: 100
+  anchor: "Smart"
+taxonomies:
+  tags: "tags"
+  series: "series"
+  categories: "categories"
+params:
+  author: Josh Hollandsworth
+  hamburger:
+    show_title: true
+    include_home: true
+  galleries:
+    caption_on_list: true
+  socials:
+    - icon: "fa-brands fa-instagram"
+      url: https://www.instagram.com
+    - icon: "fa-solid fa-envelope"
+      url: "mailto://"
+    - icon: "fa-solid fa-cloud"
+      url: "https://www.bsky.app"
+  styles:
+    family_sans_serif: "cabin"
